@@ -6,14 +6,14 @@ public class Main {
     Scanner x1 = new Scanner(System.in);
     float n1;
     
-    System.out.println("Digite a primeira nota: ");
+    System.out.print("Digite a primeira nota: ");
     n1 = x1.nextFloat();
     
     
     Scanner x2 = new Scanner(System.in);
     float n2;
     
-    System.out.println("Digite a segunda nota: ");
+    System.out.print("Digite a segunda nota: ");
     n2 = x2.nextFloat();
     
     float media = (n1 + n2) / 2;
