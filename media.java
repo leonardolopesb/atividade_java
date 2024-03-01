@@ -4,17 +4,30 @@ public class Main {
   public static void main(String[] args) {
       
     Scanner nota = new Scanner(System.in);
+    
     float n1, n2;
     
-    System.out.print("Digite a primeira nota: ");
+    System.out.print("Digite uma primeira nota: ");
     n1 = nota.nextFloat();
     
-    System.out.print("Digite a segunda nota: ");
+    while(n1 < 0 || n1 > 10){
+        System.out.print("Digite uma primeira nota válida: ");
+        n1 = nota.nextFloat();
+    }
+    
+    System.out.print("\nDigite uma segunda nota: ");
     n2 = nota.nextFloat();
+    
+    while(n2 < 0 || n2 > 10){
+        System.out.print("Digite uma segunda nota válida: ");
+        n2 = nota.nextFloat();
+    }
     
     float media = (n1 + n2) / 2;
     
-    System.out.println("\nMédia do usuario: " + media);  
+    System.out.println("\nPrimeira nota: "+n1);
+    System.out.println("Segunda nota: "+n2);
+    System.out.println("\nMédia do usuário: " + media);  
     
     if(media >= 0 && media < 4){
         System.out.println("Reprovado!");
@@ -28,7 +41,7 @@ public class Main {
         System.out.println("Aprovado!");
     }
     
-    else if (media >= 9){
+    else{
         System.out.println("Aprovado com excelência!");
     }
   }
