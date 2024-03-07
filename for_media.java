@@ -20,11 +20,9 @@ public class Main
 		    
 		    for(int i = 1; i <= n; i++){
 		        System.out.print("Digite a "+i+"ª nota: ");
+		        
 		        v[i] = scn.nextFloat();
-		    
 		        soma+= v[i];
-		    
-		        //System.out.print("Soma das notas: "+soma+ "\n");
 		    }
 		    
 		    media = soma / n;
