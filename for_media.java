@@ -3,24 +3,48 @@ import java.util.Scanner;
 public class Main
 {
 	public static void main(String[] args) {
-		Scanner nota = new Scanner(System.in);
+		Scanner scn = new Scanner(System.in);
 		
-		float soma = 0;
+		System.out.print("Digite a quantidade de notas: ");
+		int n = scn.nextInt();
 		
-		for(int i = 1; i <= 3; i++){
+		System.out.print("Digite a quantidade de alunos: ");
+		int x = scn.nextInt();
+		
+		float v[] = new float[n+1];
+		
+		for(int j = 1; j <= x; j++){
+		    float soma = 0, media = 0;
 		    
-		    float n[] = new float[3];
+		    System.out.println("\n\n"+j+ "º aluno");
 		    
-		    System.out.print("Digite a "+i+"ª nota: ");
-		    n[i] = nota.nextFloat();
+		    for(int i = 1; i <= n; i++){
+		        System.out.print("Digite a "+i+"ª nota: ");
+		        v[i] = scn.nextFloat();
 		    
-		    soma+= n[i];
+		        soma+= v[i];
 		    
-		    System.out.print(soma+ "\n");
+		        //System.out.print("Soma das notas: "+soma+ "\n");
+		    }
+		    
+		    media = soma / n;
+		    System.out.printf("\nA média do aluno é %.2f",media);
+		
+		    if(media >= 0 && media < 4){
+                System.out.print("\nReprovado!");
+            }
+    
+            else if(media < 6){
+                System.out.print("\nRecuperação!");
+            }
+    
+            else if(media < 9){
+                System.out.print("\nAprovado!");
+            }
+    
+            else{
+                System.out.print("\nAluno aprovado com excelência!");
+            }
 		}
-		
-		float media = soma / 3;
-		
-		System.out.print("A média do aluno é "+media);
-}
+    }
 }
