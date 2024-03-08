@@ -14,29 +14,31 @@ public class Main
 		float v[] = new float[n+1];
 		
 		for(int j = 1; j <= x; j++){
-		    float soma = 0, media = 0;
+		    float soma = 0;
 		    
 		    System.out.println("\n\n"+j+ "º aluno");
 		    
 		    for(int i = 1; i <= n; i++){
 		        System.out.print("Digite a "+i+"ª nota: ");
-		        
 		        v[i] = scn.nextFloat();
+		    
 		        soma+= v[i];
 		    }
 		    
-		    media = soma / n;
-		    System.out.printf("\nA média do aluno é %.2f",media);
+		    float media[] = new float[n+2];
+		    
+		    media[j] = soma/n;
+		    System.out.printf("\nA média do aluno é %.2f",media[j]);
 		
-		    if(media >= 0 && media < 4){
+		    if(media[j] >= 0 && media[j] < 4){
                 System.out.print("\nReprovado!");
             }
     
-            else if(media < 6){
+            else if(media[j] < 6){
                 System.out.print("\nRecuperação!");
             }
     
-            else if(media < 9){
+            else if(media[j] < 9){
                 System.out.print("\nAprovado!");
             }
     
