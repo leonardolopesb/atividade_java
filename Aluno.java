@@ -1,14 +1,5 @@
 import java.util.Scanner;
 
-class Alunos {
-    String[] nome = new String[3];
-    int[] matricula = new int[3];
-    int[] idade = new int[3];
-    float[] nota = new float[3];
-    
-    float media;
-}
-
 public class Aluno {
     public static void main(String[] args) {
         Scanner sn = new Scanner(System.in);
@@ -19,11 +10,13 @@ public class Aluno {
         
         Alunos[] alunos = null;
         
-        while (entrada != 4) {
-            System.out.println("1 - Para adicionar um aluno.");
+        while (entrada != 6) {
+            System.out.println("1 - Para adicionar alunos (e seus dados pessoais).");
             System.out.println("2 - Para acrescentar notas aos alunos.");
-            System.out.println("3 - Para consultar os alunos.");
-            System.out.println("4 - Sair.");
+            System.out.println("3 - Para alterar notas dos alunos.");
+            System.out.println("4 - Para consultar os alunos (e seus dados pessoais).");
+            System.out.println("5 - Para consultar os alunos (e suas notas/médias).");
+            System.out.println("6 - Sair.");
             
             System.out.print("Digite uma das opções: ");
             entrada = sn.nextInt();
@@ -54,15 +47,6 @@ public class Aluno {
                         
                         System.out.print("Digite a idade do aluno: ");
                         al.idade[i] = sn.nextInt();
-                        
-                        /*System.out.println("Digite a primeira nota do aluno:");
-                        al.nota[0] = sn.nextFloat();
-                        System.out.println("Digite a segunda nota do aluno:");
-                        al.nota[1] = sn.nextFloat();
-                        System.out.println("Digite a terceira nota do aluno:");
-                        al.nota[2] = sn.nextFloat();
-                        
-                        al.media = (al.nota[0] + al.nota[1] + al.nota[2]) / 3;*/
                     
                         System.out.println("\nAluno adicionado com Sucesso!");
                     }
@@ -79,22 +63,46 @@ public class Aluno {
                     System.out.print("Digite a matrícula do aluno: ");
                     checarMatricula = sn.nextInt();
                     
+                    /*for (int i = 0; i < contAlunos; i++) {
+                        Alunos al = new Alunos();
+                        alunos[i] = al;
+                        
+                        if(checarMatricula == al.matricula[i]){
+                            System.out.print("Digite a nota do aluno: ");
+                            al.nota[i] = sn.nextFloat();
+                        }
+                        
+                        else{
+                            break;
+                        }
+                    }*/
+                    
+                    /*System.out.println("Digite a primeira nota do aluno:");
+                    al.nota[0] = sn.nextFloat();
+                    System.out.println("Digite a segunda nota do aluno:");
+                    al.nota[1] = sn.nextFloat();
+                    System.out.println("Digite a terceira nota do aluno:");
+                    al.nota[2] = sn.nextFloat();
+                        
+                    al.media = (al.nota[0] + al.nota[1] + al.nota[2]) / 3;*/
+                    
                     break;
                     
                     /*for(int i = 0; i < num_alunos; i++){
                         if(checarMatricula)
                     }*/
                     
-                case 3:
-                    System.out.println("Consultando Alunos.");
+                case 4:
+                    System.out.println("\nConsultando dados pessoais dos alunos...");
 
                     if (alunos != null && contAlunos > 0) {
 
                         for (int i = 0; i < contAlunos; i++) {
-                            System.out.println("\n#### FICHA DO ALUNO " + (i+1) + " #####");
-                            System.out.println("Nome: " + alunos[i].nome[i]);
-                            System.out.println("Matrícula: " + alunos[i].matricula[i]);
-                            System.out.println("Idade: " + alunos[i].idade[i]);
+                            System.out.println("\t\t\t\t\t\t#### FICHA PESSOAL DO ALUNO " + (i+1) + " #####");
+                            System.out.println("\t\t\t\t\t\tNome: " + alunos[i].nome[i]);
+                            System.out.println("\t\t\t\t\t\tMatrícula: " + alunos[i].matricula[i]);
+                            System.out.println("\t\t\t\t\t\tIdade: " + alunos[i].idade[i]);
+                            
                             /*System.out.println("Nota 1: " + alunos[i].nota[0]);
                             System.out.println("Nota 2: " + alunos[i].nota[1]);
                             System.out.println("Nota 3: " + alunos[i].nota[2]);
@@ -125,7 +133,7 @@ public class Aluno {
                     }
                     break;
                     
-                case 4:
+                case 6:
                     System.out.println("Bye Bye!");
                     break;
                     
