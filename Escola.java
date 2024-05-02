@@ -23,21 +23,21 @@ public class Escola {
             
             switch (entrada) {
                 case 1:
-                    System.out.println("Adicionando Alunos...");
+                    System.out.println("Adicionando Alunos.");
+                    System.out.print("Digite a quantidade de alunos:");
                     
-                    System.out.print("\nDigite a quantidade de alunos: ");
                     num_alunos = sn.nextInt();
+                    alunos = new Alunos[num_alunos];
                     
                     /*while(num_alunos < 0 || num_alunos > 100){
                         System.out.print("\nOpção inválida! Digite a quantidade de alunos: ");
                         num_alunos = sn.nextInt();
                     }*/
                     
-                    alunos = new Alunos[num_alunos];
+                    //alunos = new Alunos[num_alunos];
                     
                     for (int i = contAlunos; i < num_alunos; i++) {
                         Alunos al = new Alunos();
-                        alunos[i] = al;
                         
                         System.out.print("\nDigite o nome do aluno: ");
                         al.nome[i] = sn.next();
