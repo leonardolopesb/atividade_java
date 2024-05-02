@@ -29,14 +29,7 @@ public class Escola {
                     num_alunos = sn.nextInt();
                     alunos = new Alunos[num_alunos];
                     
-                    /*while(num_alunos < 0 || num_alunos > 100){
-                        System.out.print("\nOpção inválida! Digite a quantidade de alunos: ");
-                        num_alunos = sn.nextInt();
-                    }*/
-                    
-                    //alunos = new Alunos[num_alunos];
-                    
-                    for (int i = contAlunos; i < num_alunos; i++) {
+                    for (int i = 0; i < num_alunos; i++) {
                         Alunos al = new Alunos();
                         
                         System.out.print("\nDigite o nome do aluno: ");
@@ -47,92 +40,130 @@ public class Escola {
                         
                         System.out.print("Digite a idade do aluno: ");
                         al.idade = sn.nextInt();
-                    
+                        
+                        alunos[i] = al;
+                        
                         System.out.println("\nAluno adicionado com Sucesso!");
                     }
                     
-                    contAlunos+= num_alunos;
+                    contAlunos += num_alunos;
                     
                     System.out.println("");
                     break;
                     
                 case 2:
-                    int checarMatricula = 0;
                     System.out.println("Acrescentando notas aos alunos...");
                     
-                    System.out.print("Digite a matrícula do aluno: ");
-                    checarMatricula = sn.nextInt();
-                    
-                    /*for (int i = 0; i < contAlunos; i++) {
-                        Alunos al = new Alunos();
-                        alunos[i] = al;
+                    if (alunos != null && contAlunos > 0) {
+                        System.out.print("Digite a matrícula do aluno: ");
+                        int checarMatricula = sn.nextInt();
                         
-                        if(checarMatricula == al.matricula[i]){
-                            System.out.print("Digite a nota do aluno: ");
-                            al.nota[i] = sn.nextFloat();
+                        boolean alunoEncontrado = false;
+                        for (int i = 0; i < contAlunos; i++) {
+                            if (checarMatricula == alunos[i].matricula) {
+                                System.out.print("Digite a nota do aluno: ");
+                                float nota = sn.nextFloat();
+                                alunos[i].addNota(nota);
+                                alunoEncontrado = true;
+                                break;
+                            }
                         }
                         
-                        else{
-                            break;
+                        if (!alunoEncontrado) {
+                            System.out.println("Aluno não encontrado.");
                         }
-                    }*/
-                    
-                    /*System.out.println("Digite a primeira nota do aluno:");
-                    al.nota[0] = sn.nextFloat();
-                    System.out.println("Digite a segunda nota do aluno:");
-                    al.nota[1] = sn.nextFloat();
-                    System.out.println("Digite a terceira nota do aluno:");
-                    al.nota[2] = sn.nextFloat();
-                        
-                    al.media = (al.nota[0] + al.nota[1] + al.nota[2]) / 3;*/
+                    } else {
+                        System.out.println("Não há alunos para adicionar notas.");
+                    }
                     
                     break;
-                    
-                    /*for(int i = 0; i < num_alunos; i++){
-                        if(checarMatricula)
-                    }*/
-                    
+                
+                case 3:
+                    System.out.println("Alterando notas dos alunos...");
+                    if (alunos != null && contAlunos > 0) {
+                        System.out.print("Digite a matrícula do aluno: ");
+                        int checarMatricula = sn.nextInt();
+                        
+                        boolean alunoEncontrado = false;
+                        for (int i = 0; i < contAlunos; i++) {
+                            if (checarMatricula == alunos[i].matricula) {
+                                System.out.println("Notas atuais do aluno:");
+                                
+                                for (int j = 0; j < alunos[i].notas.length; j++) {
+                                    System.out.println("Nota " + (j + 1) + ": " + alunos[i].notas[j]);
+                                }
+                                
+                                System.out.print("Digite o número da nota a ser alterada (1, 2, ou 3): ");
+                                int notaIndex = sn.nextInt();
+
+                                if (notaIndex >= 1 && notaIndex <= 3) {
+                                    System.out.print("Digite a nova nota: ");
+                                    float novaNota = sn.nextFloat();
+                                    alunos[i].alterarNota(notaIndex - 1, novaNota);
+                                    System.out.println("Nota alterada com sucesso!");
+                                } else {
+                                    System.out.println("Número de nota inválido.");
+                                }
+                                alunoEncontrado = true;
+                                break;
+                            }
+                        }
+                        if (!alunoEncontrado) {
+                            System.out.println("Aluno não encontrado.");
+                        }
+                    } else {
+                        System.out.println("Não há alunos para alterar notas.");
+                    }
+                    break;
+                
                 case 4:
                     System.out.println("\nConsultando dados pessoais dos alunos...");
 
                     if (alunos != null && contAlunos > 0) {
-
                         for (int i = 0; i < contAlunos; i++) {
                             System.out.println("\t\t\t\t\t\t#### FICHA PESSOAL DO ALUNO " + (i+1) + " #####");
                             System.out.println("\t\t\t\t\t\tNome: " + alunos[i].nome);
                             System.out.println("\t\t\t\t\t\tMatrícula: " + alunos[i].matricula);
                             System.out.println("\t\t\t\t\t\tIdade: " + alunos[i].idade);
-                            
-                            /*System.out.println("Nota 1: " + alunos[i].nota[0]);
-                            System.out.println("Nota 2: " + alunos[i].nota[1]);
-                            System.out.println("Nota 3: " + alunos[i].nota[2]);
-                            System.out.println("Média: " + alunos[i].media);*/
-                            
-                            /*if (alunos[i].media >= 9) {
-                                System.out.println("Excelente, aluno aprovado!");
-                            } 
-                            
-                            else if (alunos[i].media >= 6) {
-                                System.out.println("Aluno aprovado!");
-                            } 
-                            
-                            else if (alunos[i].media >= 4) {
-                                System.out.println("Aluno em recuperação!");
-                            } 
-                            
-                            else {
-                                System.out.println("Aluno reprovado!");
-                            }*/
-                            
                             System.out.println();
                         }
-                    } 
-                    
-                    else {
+                    } else {
                         System.out.println("Não há alunos para consultar.");
                     }
                     break;
                     
+                case 5:
+                    System.out.println("Consultando notas/médias dos alunos...");
+                    
+                    if (alunos != null && contAlunos > 0) {
+                        for (int i = 0; i < contAlunos; i++) {
+                            System.out.println("\t\t\t\t\t\t#### NOTAS/MÉDIAS DO ALUNO " + (i+1) + " #####");
+                            System.out.println("\t\t\t\t\t\tNome: " + alunos[i].nome);
+                            System.out.println("\t\t\t\t\t\tMatrícula: " + alunos[i].matricula);
+                            
+                            float somaNotas = 0;
+                            int numNotas = 0;
+                            for (float nota : alunos[i].notas) {
+                                if (nota != 0) {
+                                    System.out.println("\t\t\t\t\t\tNota " + (numNotas + 1) + ": " + nota);
+                                    somaNotas += nota;
+                                    numNotas++;
+                                }
+                            }
+                            
+                            if (numNotas > 0) {
+                                float media = somaNotas / numNotas;
+                                System.out.println("\t\t\t\t\t\tMédia: " + media);
+                            } else {
+                                System.out.println("\t\t\t\t\t\tNenhuma nota registrada.");
+                            }
+                            System.out.println();
+                        }
+                    } else {
+                        System.out.println("Não há alunos para consultar notas/médias.");
+                    }
+                    break;
+                
                 case 6:
                     System.out.println("Bye Bye!");
                     break;
