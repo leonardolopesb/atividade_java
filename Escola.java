@@ -40,13 +40,13 @@ public class Escola {
                         Alunos al = new Alunos();
                         
                         System.out.print("\nDigite o nome do aluno: ");
-                        al.nome[i] = sn.next();
+                        al.nome = sn.next();
                         
                         System.out.print("Digite o número de matricula do aluno: ");
-                        al.matricula[i] = sn.nextInt();
+                        al.matricula = sn.nextInt();
                         
                         System.out.print("Digite a idade do aluno: ");
-                        al.idade[i] = sn.nextInt();
+                        al.idade = sn.nextInt();
                     
                         System.out.println("\nAluno adicionado com Sucesso!");
                     }
@@ -99,9 +99,9 @@ public class Escola {
 
                         for (int i = 0; i < contAlunos; i++) {
                             System.out.println("\t\t\t\t\t\t#### FICHA PESSOAL DO ALUNO " + (i+1) + " #####");
-                            System.out.println("\t\t\t\t\t\tNome: " + alunos[i].nome[i]);
-                            System.out.println("\t\t\t\t\t\tMatrícula: " + alunos[i].matricula[i]);
-                            System.out.println("\t\t\t\t\t\tIdade: " + alunos[i].idade[i]);
+                            System.out.println("\t\t\t\t\t\tNome: " + alunos[i].nome);
+                            System.out.println("\t\t\t\t\t\tMatrícula: " + alunos[i].matricula);
+                            System.out.println("\t\t\t\t\t\tIdade: " + alunos[i].idade);
                             
                             /*System.out.println("Nota 1: " + alunos[i].nota[0]);
                             System.out.println("Nota 2: " + alunos[i].nota[1]);
