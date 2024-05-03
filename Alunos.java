@@ -1,4 +1,4 @@
-class Alunos {
+class Alunos extends Escola {
     public String nome;
     public int matricula;
     public int idade;
