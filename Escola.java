@@ -6,9 +6,10 @@ public class Escola {
         
         int entrada = 0;
         int num_alunos = 0;
-        int contAlunos = 0;
         
         Alunos[] alunos = null;
+        
+        Aluno al = new Aluno();
         
         while (entrada != 6) {
             System.out.println("1 - Para adicionar alunos (e seus dados pessoais).");
@@ -18,14 +19,13 @@ public class Escola {
             System.out.println("5 - Para consultar os alunos (e suas notas/médias).");
             System.out.println("6 - Sair.");
             
-            System.out.print("Digite uma das opções: ");
+            System.out.print("\nDigite uma das opções: ");
             entrada = sn.nextInt();
             
             switch (entrada) {
                 case 1:
                     System.out.println("Adicionando Alunos...");
                     
-                    Aluno al = new Aluno();
                     al.add_aluno();
                     
                     num_alunos++;
@@ -36,12 +36,12 @@ public class Escola {
                 case 2:
                     System.out.println("Acrescentando notas aos alunos...");
                     
-                    if (alunos != null && num_alunos > 0) {
+                    if (num_alunos > 0) {
                         System.out.print("Digite a matrícula do aluno: ");
                         int checarMatricula = sn.nextInt();
                         
                         boolean alunoEncontrado = false;
-                        for (int i = 0; i < contAlunos; i++) {
+                        for (int i = 0; i < num_alunos; i++) {
                             if (checarMatricula == alunos[i].matricula) {
                                 System.out.print("Digite a nota do aluno: ");
                                 float nota = sn.nextFloat();
@@ -67,7 +67,7 @@ public class Escola {
                         int checarMatricula = sn.nextInt();
                         
                         boolean alunoEncontrado = false;
-                        for (int i = 0; i < contAlunos; i++) {
+                        for (int i = 0; i < num_alunos; i++) {
                             if (checarMatricula == alunos[i].matricula) {
                                 System.out.println("Notas atuais do aluno:");
                                 
@@ -117,8 +117,8 @@ public class Escola {
                 case 5:
                     System.out.println("Consultando notas/médias dos alunos...");
                     
-                    if (alunos != null && contAlunos > 0) {
-                        for (int i = 0; i < contAlunos; i++) {
+                    if (alunos != null && num_alunos > 0) {
+                        for (int i = 0; i < num_alunos; i++) {
                             System.out.println("\t\t\t\t\t\t#### NOTAS/MÉDIAS DO ALUNO " + (i+1) + " #####");
                             System.out.println("\t\t\t\t\t\tNome: " + alunos[i].nome);
                             System.out.println("\t\t\t\t\t\tMatrícula: " + alunos[i].matricula);
