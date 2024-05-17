@@ -7,9 +7,7 @@ public class Escola {
         int entrada = 0;
         int num_alunos = 0;
         
-        Alunos[] alunos = null;
-        
-        Aluno al = new Aluno();
+        Aluno[] alunos = new Aluno[100];
         
         while (entrada != 6) {
             System.out.println("1 - Para adicionar alunos (e seus dados pessoais).");
@@ -19,15 +17,17 @@ public class Escola {
             System.out.println("5 - Para consultar os alunos (e suas notas/médias).");
             System.out.println("6 - Sair.");
             
-            System.out.print("\nDigite uma das opções: ");
+            System.out.print("Digite uma das opções: ");
             entrada = sn.nextInt();
             
             switch (entrada) {
                 case 1:
                     System.out.println("Adicionando Alunos...");
                     
+                    Aluno al = new Aluno();
                     al.add_aluno();
                     
+                    alunos[num_alunos] = al;
                     num_alunos++;
                     
                     System.out.println("");
@@ -62,7 +62,7 @@ public class Escola {
                 
                 case 3:
                     System.out.println("Alterando notas dos alunos...");
-                    if (alunos != null && num_alunos > 0) {
+                    if (num_alunos > 0) {
                         System.out.print("Digite a matrícula do aluno: ");
                         int checarMatricula = sn.nextInt();
                         
@@ -99,10 +99,10 @@ public class Escola {
                     break;
                 
                 case 4:
-                    /*System.out.println("\nConsultando dados pessoais dos alunos...");
+                    System.out.println("\nConsultando dados pessoais dos alunos...");
 
-                    if (alunos != null && contAlunos > 0) {
-                        for (int i = 0; i < contAlunos; i++) {
+                    if (num_alunos > 0) {
+                        for (int i = 0; i < num_alunos; i++) {
                             System.out.println("\t\t\t\t\t\t#### DADOS PESSOAIS DO ALUNO " + (i + 1) + " #####");
                             alunos[i].mostrar_aluno();
                             System.out.println();
@@ -110,14 +110,14 @@ public class Escola {
                     } 
                     else {
                         System.out.println("Não há alunos para consultar.");
-                    }*/
+                    }
                     break;
 
                     
                 case 5:
                     System.out.println("Consultando notas/médias dos alunos...");
                     
-                    if (alunos != null && num_alunos > 0) {
+                    if (num_alunos > 0) {
                         for (int i = 0; i < num_alunos; i++) {
                             System.out.println("\t\t\t\t\t\t#### NOTAS/MÉDIAS DO ALUNO " + (i+1) + " #####");
                             System.out.println("\t\t\t\t\t\tNome: " + alunos[i].nome);
@@ -154,5 +154,6 @@ public class Escola {
                     System.out.println("Opção Inválida! Por favor, selecione uma das opções abaixo:\n");
             }
         }
+        sn.close();
     }
 }
