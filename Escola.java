@@ -7,7 +7,7 @@ public class Escola {
         int entrada = 0;
         int num_alunos = 0;
         
-        Aluno[] alunos = new Aluno[100];
+        Aluno[] alunos = new Aluno[1000];
         
         while (entrada != 6) {
             System.out.println("1 - Para adicionar alunos (e seus dados pessoais).");
@@ -17,7 +17,7 @@ public class Escola {
             System.out.println("5 - Para consultar os alunos (e suas notas/médias).");
             System.out.println("6 - Sair.");
             
-            System.out.print("Digite uma das opções: ");
+            System.out.print("\nDigite uma das opções: ");
             entrada = sn.nextInt();
             
             switch (entrada) {
@@ -120,8 +120,8 @@ public class Escola {
                     if (num_alunos > 0) {
                         for (int i = 0; i < num_alunos; i++) {
                             System.out.println("\t\t\t\t\t\t#### NOTAS/MÉDIAS DO ALUNO " + (i+1) + " #####");
-                            System.out.println("\t\t\t\t\t\tNome: " + alunos[i].nome);
-                            System.out.println("\t\t\t\t\t\tMatrícula: " + alunos[i].matricula);
+                            System.out.println("\t\t\t\t\t\t#### Nome: " + alunos[i].nome);
+                            System.out.println("\t\t\t\t\t\t#### Matrícula: " + alunos[i].matricula);
                             
                             float somaNotas = 0;
                             int numNotas = 0;
