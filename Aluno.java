@@ -12,29 +12,34 @@ class Aluno extends Escola{
     Scanner sn = new Scanner(System.in);
 
     public void add_aluno() {
-        System.out.println("Digite o nome do aluno: ");
+        System.out.print("Digite o nome do aluno: ");
         this.nome = sn.next();
-        System.out.println("Digite a data de nascimento do aluno: DD/MM/AAAA ");
+        
+        System.out.print("Digite a data de nascimento do aluno (DD/MM/AAAA): ");
         this.data_nascimento = sn.next();
-        System.out.println("Digite o nome do pai do aluno: ");
+        
+        System.out.print("Digite o nome do pai do aluno: ");
         this.nome_pai = sn.next();
-        System.out.println("Digite o nome da mãe do aluno: ");
+        
+        System.out.print("Digite o nome da mãe do aluno: ");
         this.nome_mae = sn.next();
-        System.out.println("Digite o número para contato do aluno: ");
+        
+        System.out.print("Digite o número para contato do aluno: ");
         this.contato = sn.next();
-        System.out.println("Digite a matrícula do aluno: ");
+        
+        System.out.print("Digite a matrícula do aluno: ");
         this.matricula = sn.nextInt();
     }
     
     public void mostrar_aluno() {
-        System.out.println("****************************************************");
-        System.out.println("FICHA DO ALUNO");
-        System.out.println("Nome: " + this.nome);
-        System.out.println("Data de Nascimento: " + this.data_nascimento);
-        System.out.println("Nome do pai: " + this.nome_pai);
-        System.out.println("Nome da mãe: " + this.nome_mae);
-        System.out.println("Número para contato: " + this.contato);
-        System.out.println("Número da Matrícula: " + this.matricula);
+        System.out.println();
+        System.out.println("\t\t\t\t\t\t#### FICHA DO ALUNO");
+        System.out.println("\t\t\t\t\t\t#### Nome: " + this.nome);
+        System.out.println("\t\t\t\t\t\t#### Data de Nascimento: " + this.data_nascimento);
+        System.out.println("\t\t\t\t\t\t#### Nome do pai: " + this.nome_pai);
+        System.out.println("\t\t\t\t\t\t#### Nome da mãe: " + this.nome_mae);
+        System.out.println("\t\t\t\t\t\t#### Número para contato: " + this.contato);
+        System.out.println("\t\t\t\t\t\t#### Número da Matrícula: " + this.matricula);
         System.out.println("****************************************************");
     }
 
