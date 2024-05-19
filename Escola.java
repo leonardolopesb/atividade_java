@@ -34,7 +34,7 @@ public class Escola {
                     break;
                     
                 case 2:
-                    System.out.println("Acrescentando notas aos alunos...");
+                    System.out.println("\nAcrescentando notas aos alunos...");
                     
                     if (num_alunos > 0) {
                         System.out.print("Digite a matrícula do aluno: ");
@@ -52,16 +52,16 @@ public class Escola {
                         }
                         
                         if (!alunoEncontrado) {
-                            System.out.println("Aluno não encontrado.");
+                            System.out.println("Aluno não encontrado.\n");
                         }
                     } else {
-                        System.out.println("Não há alunos para adicionar notas.");
+                        System.out.println("Não há alunos para adicionar notas.\n");
                     }
                     
                     break;
                 
                 case 3:
-                    System.out.println("Alterando notas dos alunos...");
+                    System.out.println("\nAlterando notas dos alunos...");
                     if (num_alunos > 0) {
                         System.out.print("Digite a matrícula do aluno: ");
                         int checarMatricula = sn.nextInt();
@@ -82,19 +82,19 @@ public class Escola {
                                     System.out.print("Digite a nova nota: ");
                                     float novaNota = sn.nextFloat();
                                     alunos[i].alterarNota(notaIndex - 1, novaNota);
-                                    System.out.println("Nota alterada com sucesso!");
+                                    System.out.println("Nota alterada com sucesso!\n");
                                 } else {
-                                    System.out.println("Número de nota inválido.");
+                                    System.out.println("Número de nota inválido.\n");
                                 }
                                 alunoEncontrado = true;
                                 break;
                             }
                         }
                         if (!alunoEncontrado) {
-                            System.out.println("Aluno não encontrado.");
+                            System.out.println("Aluno não encontrado.\n");
                         }
                     } else {
-                        System.out.println("Não há alunos para alterar notas.");
+                        System.out.println("Não há alunos para alterar notas.\n");
                     }
                     break;
                 
@@ -103,19 +103,19 @@ public class Escola {
 
                     if (num_alunos > 0) {
                         for (int i = 0; i < num_alunos; i++) {
-                            System.out.println("\t\t\t\t\t\t#### DADOS PESSOAIS DO ALUNO " + (i + 1) + " #####");
+                            System.out.println("\t\t\t\t\t\t#### DADOS PESSOAIS DO ALUNO DE MATRÍCULA: " + alunos[i].matricula);
                             alunos[i].mostrar_aluno();
                             System.out.println();
                         }
                     } 
                     else {
-                        System.out.println("Não há alunos para consultar.");
+                        System.out.println("Não há alunos para consultar.\n");
                     }
                     break;
 
                     
                 case 5:
-                    System.out.println("Consultando notas/médias dos alunos...");
+                    System.out.println("\nConsultando notas/médias dos alunos...");
                     
                     if (num_alunos > 0) {
                         for (int i = 0; i < num_alunos; i++) {
@@ -137,17 +137,17 @@ public class Escola {
                                 float media = somaNotas / numNotas;
                                 System.out.println("\t\t\t\t\t\tMédia: " + media);
                             } else {
-                                System.out.println("\t\t\t\t\t\tNenhuma nota registrada.");
+                                System.out.println("\t\t\t\t\t\tNenhuma nota registrada.\n");
                             }
                             System.out.println();
                         }
                     } else {
-                        System.out.println("Não há alunos para consultar notas/médias.");
+                        System.out.println("Não há alunos para consultar notas/médias.\n");
                     }
                     break;
                 
                 case 6:
-                    System.out.println("Bye Bye!");
+                    System.out.println("\nBye Bye!");
                     break;
                     
                 default:
