@@ -7,7 +7,7 @@ public class Main {
         int entrada = 0;
         int num_alunos = 0;
         
-        Aluno[] alunos = new Aluno[1000];
+        Estudante[] alunos = new Estudante[1000];
         
         while (entrada != 6) {
             System.out.println("1 - Para adicionar alunos (e seus dados pessoais).");
@@ -43,7 +43,7 @@ public class Main {
                         boolean alunoEncontrado = false;
                         for (int i = 0; i < num_alunos; i++) {
                             if (checarMatricula == alunos[i].getMatricula()) {
-                                System.out.println("\nAluno referenciado: " +alunos[i].getNome());
+                                System.out.println("\nAluno referenciado: " + alunos[i].getNome());
                                 System.out.print("Digite a nota do aluno: ");
                                 float nota = sn.nextFloat();
                                 alunos[i].addNota(nota);
@@ -70,7 +70,7 @@ public class Main {
                         boolean alunoEncontrado = false;
                         for (int i = 0; i < num_alunos; i++) {
                             if (checarMatricula == alunos[i].getMatricula()) {
-                                System.out.println("Aluno referenciado: " +alunos[i].getNome());
+                                System.out.println("Aluno referenciado: " + alunos[i].getNome());
                                 System.out.println("\nNotas atuais do aluno:");
                                 
                                 for (int j = 0; j < alunos[i].getNotas().length; j++) {
@@ -121,9 +121,8 @@ public class Main {
                     
                     if (num_alunos > 0) {
                         for (int i = 0; i < num_alunos; i++) {
-                            System.out.println("\t\t\t\t\t\t#### NOTAS/MÉDIAS DO ALUNO " + (i+1) + " #####");
+                            System.out.println("\t\t\t\t\t\t#### NOTAS/MÉDIAS DO ALUNO DE MATRÍCULA " + alunos[i].getMatricula());
                             System.out.println("\t\t\t\t\t\t#### Nome: " + alunos[i].getNome());
-                            System.out.println("\t\t\t\t\t\t#### Matrícula: " + alunos[i].getMatricula());
                             
                             float somaNotas = 0;
                             int numNotas = 0;
