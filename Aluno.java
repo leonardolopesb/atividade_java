@@ -1,15 +1,45 @@
 import java.util.Scanner;
 
-abstract class Aluno {
-    public String nome;
-    public int idade;
+abstract class Pessoa {
+    protected String nome;
+    protected int idade;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public abstract void mostrar_dados();
+}
+
+class Aluno extends Pessoa {
     protected int matricula;
     protected float[] notas = new float[3];
     Scanner sn = new Scanner(System.in);
 
-    public abstract void add_aluno();
+    public int getMatricula() {
+        return matricula;
+    }
 
-    public void mostrar_aluno() {
+    public float[] getNotas() {
+        return notas;
+    }
+
+    public void add_aluno() {
+        System.out.print("Digite o nome do aluno: ");
+        this.nome = sn.next();
+        
+        System.out.print("Digite a idade do aluno: ");
+        this.idade = sn.nextInt();
+        
+        System.out.print("Digite a matrícula do aluno: ");
+        this.matricula = sn.nextInt();
+    }
+    
+    public void mostrar_dados() {
         System.out.println();
         System.out.println("\t\t\t\t\t\t#### FICHA DO ALUNO");
         System.out.println("\t\t\t\t\t\t#### Nome: " + this.nome);
@@ -27,26 +57,12 @@ abstract class Aluno {
         }
         System.out.println("Limite de notas atingido (máximo 3 notas).\n");
     }
-
+    
     public void alterarNota(int index, float novaNota) {
         if (index >= 0 && index < notas.length) {
             notas[index] = novaNota;
         } else {
             System.out.println("Índice de nota inválido.");
         }
-    }
-}
-
-class AlunoRegular extends Aluno {
-
-    public void add_aluno() {
-        System.out.print("Digite o nome do aluno: ");
-        this.nome = sn.next();
-
-        System.out.print("Digite a idade do aluno: ");
-        this.idade = sn.nextInt();
-
-        System.out.print("Digite a matrícula do aluno: ");
-        this.matricula = sn.nextInt();
     }
 }
