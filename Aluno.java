@@ -1,5 +1,14 @@
 import java.util.Scanner;
 
+interface Estudante {
+    void addNota(float nota);
+    void alterarNota(int index, float novaNota);
+    void mostrar_dados();
+    float[] getNotas();
+    String getNome();
+    int getMatricula();
+}
+
 abstract class Pessoa {
     protected String nome;
     protected int idade;
@@ -15,7 +24,7 @@ abstract class Pessoa {
     public abstract void mostrar_dados();
 }
 
-class Aluno extends Pessoa {
+class Aluno extends Pessoa implements Estudante {
     protected int matricula;
     protected float[] notas = new float[3];
     Scanner sn = new Scanner(System.in);
