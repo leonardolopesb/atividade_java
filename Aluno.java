@@ -50,12 +50,21 @@ class Aluno extends Pessoa {
     public void addNota(float nota) {
         for (int i = 0; i < notas.length; i++) {
             if (notas[i] == 0) {
-                notas[i] = nota;
-                System.out.println("Nota adicionada com sucesso!\n");
-                return;
+                if(nota < 0 || nota > 10){
+                   System.out.println("Nota inválida!\n");
+                   break;
+                }
+                else{
+                    notas[i] = nota;
+                    System.out.println("Nota adicionada com sucesso!\n");
+                    return;
+                }
+            }
+            
+            if(notas[i] == 3){
+                System.out.println("Limite de notas atingido (máximo 3 notas).\n");
             }
         }
-        System.out.println("Limite de notas atingido (máximo 3 notas).\n");
     }
     
     public void alterarNota(int index, float novaNota) {
