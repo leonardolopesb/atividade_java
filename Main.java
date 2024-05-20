@@ -22,7 +22,7 @@ public class Main {
             
             switch (entrada) {
                 case 1:
-                    System.out.println("Adicionando Alunos...");
+                    System.out.println("\nAdicionando Alunos...");
                     
                     Aluno al = new Aluno();
                     al.add_aluno();
@@ -43,6 +43,7 @@ public class Main {
                         boolean alunoEncontrado = false;
                         for (int i = 0; i < num_alunos; i++) {
                             if (checarMatricula == alunos[i].getMatricula()) {
+                                System.out.println("\nAluno referenciado: " +alunos[i].getNome());
                                 System.out.print("Digite a nota do aluno: ");
                                 float nota = sn.nextFloat();
                                 alunos[i].addNota(nota);
@@ -69,7 +70,8 @@ public class Main {
                         boolean alunoEncontrado = false;
                         for (int i = 0; i < num_alunos; i++) {
                             if (checarMatricula == alunos[i].getMatricula()) {
-                                System.out.println("Notas atuais do aluno:");
+                                System.out.println("Aluno referenciado: " +alunos[i].getNome());
+                                System.out.println("\nNotas atuais do aluno:");
                                 
                                 for (int j = 0; j < alunos[i].getNotas().length; j++) {
                                     System.out.println("Nota " + (j + 1) + ": " + alunos[i].getNotas()[j]);
