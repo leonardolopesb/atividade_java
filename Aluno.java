@@ -7,17 +7,7 @@ abstract class Aluno {
     protected float[] notas = new float[3];
     Scanner sn = new Scanner(System.in);
 
-    public void add_aluno() {
-        System.out.print("Digite o nome do aluno: ");
-        this.nome = sn.next();
-        
-        System.out.print("Digite a idade do aluno: ");
-        this.idade = sn.nextInt();
-        
-        System.out.print("Digite a matrícula do aluno: ");
-        this.matricula = sn.nextInt();
-    }
-
+    public abstract void add_aluno();
 
     public void mostrar_aluno() {
         System.out.println();
@@ -48,7 +38,7 @@ abstract class Aluno {
 }
 
 class AlunoRegular extends Aluno {
-    @Override
+
     public void add_aluno() {
         System.out.print("Digite o nome do aluno: ");
         this.nome = sn.next();
