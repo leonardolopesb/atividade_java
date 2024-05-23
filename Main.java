@@ -10,11 +10,13 @@ public class Main {
         Estudante[] alunos = new Estudante[1000];
         
         while (entrada != 6) {
-            System.out.println("1 - Para adicionar alunos (e seus dados pessoais).");
+            System.out.println("1 - Para adicionar alunos (e seus dados pessoais) + correlacionar às turmas.");
             System.out.println("2 - Para acrescentar notas aos alunos.");
+            System.out.println("X - Para alterar dados pessoais dos alunos.");
             System.out.println("3 - Para alterar notas dos alunos.");
             System.out.println("4 - Para consultar os alunos (e seus dados pessoais).");
             System.out.println("5 - Para consultar os alunos (e suas notas/médias).");
+            System.out.println("Y - Para excluir alunos");
             System.out.println("6 - Sair.");
             
             System.out.print("\nDigite uma das opções: ");
