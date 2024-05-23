@@ -13,18 +13,31 @@ abstract class Pessoa {
     protected String nome;
     protected int idade;
 
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
     public String getNome() {
         return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getIdade() {
         return idade;
     }
 
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
     public abstract void mostrar_dados();
 }
 
-class Aluno extends Pessoa implements Estudante {
+public class Aluno extends Pessoa implements Estudante {
     protected int matricula;
     protected float[] notas = new float[3];
     Scanner sn = new Scanner(System.in);
