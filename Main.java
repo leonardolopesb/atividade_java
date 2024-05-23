@@ -105,7 +105,7 @@ public class Main {
 
                     if (num_alunos > 0) {
                         for (int i = 0; i < num_alunos; i++) {
-                            System.out.println("\t\t\t\t\t\t#### DADOS PESSOAIS DO ALUNO DE MATRÍCULA: " + alunos[i].getMatricula());
+                            System.out.println("\t\t\tDados pessoais do aluno com matrícula: " + alunos[i].getMatricula());
                             alunos[i].mostrar_dados();
                             System.out.println();
                         }
@@ -121,14 +121,13 @@ public class Main {
                     
                     if (num_alunos > 0) {
                         for (int i = 0; i < num_alunos; i++) {
-                            System.out.println("\t\t\t\t\t\t#### NOTAS/MÉDIAS DO ALUNO DE MATRÍCULA " + alunos[i].getMatricula());
-                            System.out.println("\t\t\t\t\t\t#### Nome: " + alunos[i].getNome());
+                            System.out.println("\t\t\tNotas e média do aluno com matrícula " + alunos[i].getMatricula());
                             
                             float somaNotas = 0;
                             int numNotas = 0;
                             for (float nota : alunos[i].getNotas()) {
                                 if (nota != 0) {
-                                    System.out.println("\t\t\t\t\t\tNota " + (numNotas + 1) + ": " + nota);
+                                    System.out.println("\n\t\t\tNota " + (numNotas + 1) + ": " + nota);
                                     somaNotas += nota;
                                     numNotas++;
                                 }
@@ -136,9 +135,9 @@ public class Main {
                             
                             if (numNotas > 0) {
                                 float media = somaNotas / numNotas;
-                                System.out.println("\t\t\t\t\t\tMédia: " + media);
+                                System.out.println("\n\t\t\tMédia: " + media);
                             } else {
-                                System.out.println("\t\t\t\t\t\tNenhuma nota registrada.\n");
+                                System.out.println("\t\t\tNenhuma nota registrada.\n");
                             }
                             System.out.println();
                         }
