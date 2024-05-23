@@ -13,11 +13,6 @@ abstract class Pessoa {
     protected String nome;
     protected int idade;
 
-    public Pessoa(String nome, int idade) {
-        this.nome = nome;
-        this.idade = idade;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -46,8 +41,16 @@ public class Aluno extends Pessoa implements Estudante {
         return matricula;
     }
 
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+    
     public float[] getNotas() {
         return notas;
+    }
+    
+    public void setNotas(float[] notas) {
+        this.notas = notas;
     }
 
     public void add_aluno() {
