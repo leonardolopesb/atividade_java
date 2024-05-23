@@ -66,10 +66,10 @@ public class Aluno extends Pessoa implements Estudante {
     
     public void mostrar_dados() {
         System.out.println();
-        System.out.println("\t\t\t\t\t\t#### FICHA DO ALUNO");
-        System.out.println("\t\t\t\t\t\t#### Nome: " + this.nome);
-        System.out.println("\t\t\t\t\t\t#### Idade: " + this.idade);
-        System.out.println("\t\t\t\t\t\t#### Número da Matrícula: " + this.matricula);
+        System.out.println("\t\t\t\tFICHA DO ALUNO");
+        System.out.println("\t\t\t- Nome: " + this.nome);
+        System.out.println("\t\t\t- Idade: " + this.idade);
+        System.out.println("\t\t\t- Número da Matrícula: " + this.matricula);
     }
 
     public void addNota(float nota) {
@@ -96,7 +96,7 @@ public class Aluno extends Pessoa implements Estudante {
         if (index >= 0 && index < notas.length) {
             notas[index] = novaNota;
         } else {
-            System.out.println("Índice de nota inválido.");
+            System.out.println("Índice de nota inválido.\n");
         }
     }
 }
