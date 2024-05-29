@@ -8,7 +8,6 @@ public class Main {
         int num_alunos = 0;
         
         Estudante[] alunos = new Estudante[1000];
-        Aluno al = new Aluno();
         
         while (entrada != 8) {
             System.out.println("1 - Para adicionar alunos (e seus dados pessoais).");
@@ -27,10 +26,28 @@ public class Main {
                 case 1:
                     System.out.println("\nAdicionando Alunos...");
                     
-                    al.add_aluno();
+                    Aluno al = new Aluno();
+                    boolean matriculaValida = false;
                     
-                    alunos[num_alunos] = al;
-                    num_alunos++;
+                    while (!matriculaValida) {
+                        al.add_aluno();
+                        
+                        boolean matriculaExistente = false;
+                        for (int i = 0; i < num_alunos; i++) {
+                            if (al.getMatricula() == alunos[i].getMatricula()) {
+                                matriculaExistente = true;
+                                System.out.println("Matrícula já existente! Por favor, insira outra matrícula.\n");
+                                break;
+                            }
+                        }
+                        
+                        if (!matriculaExistente) {
+                            matriculaValida = true;
+                            alunos[num_alunos] = al;
+                            num_alunos++;
+                            System.out.println("\nAluno adicionado com sucesso!\n");
+                        }
+                    }
                     
                     System.out.println("");
                     break;
@@ -72,7 +89,7 @@ public class Main {
                         boolean alunoEncontrado = false;
                         for (int i = 0; i < num_alunos; i++) {
                             if (checarMatricula == alunos[i].getMatricula()) {
-                                alunos[i].alterarAluno();
+                                alunos[i].alterarAluno(alunos, num_alunos);
                                 alunoEncontrado = true;
                                 break;
                             }
@@ -129,7 +146,7 @@ public class Main {
 
                     if (num_alunos > 0) {
                         for (int i = 0; i < num_alunos; i++) {
-                            System.out.println("\t\t\tDados pessoais do aluno com matrícula: " + alunos[i].getMatricula());
+                            System.out.println("\n\t\t\tDados pessoais do aluno com matrícula: " + alunos[i].getMatricula());
                             alunos[i].mostrar_dados();
                             System.out.println();
                         }
@@ -145,13 +162,13 @@ public class Main {
                     
                     if (num_alunos > 0) {
                         for (int i = 0; i < num_alunos; i++) {
-                            System.out.println("\t\t\tNotas e média do aluno com matrícula " + alunos[i].getMatricula());
+                            System.out.println("\n\t\t\tNotas e média do aluno com matrícula " + alunos[i].getMatricula() + "\n");
                             
                             float somaNotas = 0;
                             int numNotas = 0;
                             for (float nota : alunos[i].getNotas()) {
                                 if (nota != 0) {
-                                    System.out.println("\n\t\t\tNota " + (numNotas + 1) + ": " + nota);
+                                    System.out.println("\t\t\tNota " + (numNotas + 1) + ": " + nota);
                                     somaNotas += nota;
                                     numNotas++;
                                 }
