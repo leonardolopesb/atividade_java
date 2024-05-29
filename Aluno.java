@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 interface Estudante {
     void addNota(float nota);
+    void alterarAluno();
     void alterarNota(int index, float novaNota);
     void mostrar_dados();
     float[] getNotas();
@@ -28,13 +29,12 @@ abstract class Pessoa {
     public void setIdade(int idade) {
         this.idade = idade;
     }
-
-    public abstract void mostrar_dados();
 }
 
 public class Aluno extends Pessoa implements Estudante {
     protected int matricula;
     protected float[] notas = new float[3];
+    protected int turma;
     Scanner sn = new Scanner(System.in);
 
     public int getMatricula() {
@@ -53,6 +53,14 @@ public class Aluno extends Pessoa implements Estudante {
         this.notas = notas;
     }
 
+    public int getTurma() {
+        return turma;
+    }
+
+    public void setTurma(int turma) {
+        this.turma = turma;
+    }
+
     public void add_aluno() {
         System.out.print("Digite o nome do aluno: ");
         this.nome = sn.next();
@@ -62,6 +70,9 @@ public class Aluno extends Pessoa implements Estudante {
         
         System.out.print("Digite a matrícula do aluno: ");
         this.matricula = sn.nextInt();
+        
+        System.out.print("Digite o ano e a turma do aluno: ");
+        this.turma = sn.nextInt();
     }
     
     public void mostrar_dados() {
@@ -70,6 +81,7 @@ public class Aluno extends Pessoa implements Estudante {
         System.out.println("\t\t\t- Nome: " + this.nome);
         System.out.println("\t\t\t- Idade: " + this.idade);
         System.out.println("\t\t\t- Número da Matrícula: " + this.matricula);
+        System.out.println("\t\t\t- Turma: " + this.turma);
     }
 
     public void addNota(float nota) {
@@ -97,6 +109,43 @@ public class Aluno extends Pessoa implements Estudante {
             notas[index] = novaNota;
         } else {
             System.out.println("Índice de nota inválido.\n");
+        }
+    }
+
+    public void alterarAluno() {
+        System.out.println("\n1 - Alterar Nome");
+        System.out.println("2 - Alterar Idade");
+        System.out.println("3 - Alterar Matrícula");
+        System.out.println("4 - Alterar Turma\n");
+        System.out.print("Escolha a informação a alterar: ");
+        int info = sn.nextInt();
+        switch (info) {
+            case 1:
+                System.out.print("\nDigite o novo nome: ");
+                String novoNome = sn.next();
+                this.setNome(novoNome);
+                System.out.println("Nome alterado com sucesso!\n");
+                break;
+            case 2:
+                System.out.print("Digite a nova idade: ");
+                int novaIdade = sn.nextInt();
+                this.setIdade(novaIdade);
+                System.out.println("Idade alterada com sucesso!\n");
+                break;
+            case 3:
+                System.out.print("Digite a nova matrícula: ");
+                int novaMatricula = sn.nextInt();
+                this.setMatricula(novaMatricula);
+                System.out.println("Matrícula alterada com sucesso!\n");
+                break;
+            case 4:
+                System.out.print("Digite a nova turma: ");
+                int novaTurma = sn.nextInt();
+                this.setTurma(novaTurma);
+                System.out.println("Turma alterada com sucesso!\n");
+                break;
+            default:
+                System.out.println("Opção inválida.\n");
         }
     }
 }
