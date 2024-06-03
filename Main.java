@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -5,17 +6,16 @@ public class Main {
         Scanner sn = new Scanner(System.in);
         
         int entrada = 0;
-        int num_alunos = 0;
-        
-        Estudante[] alunos = new Estudante[1000];
+        int cont = 0;
+        ArrayList<Aluno> alunos = new ArrayList<>();
         
         while (entrada != 8) {
             System.out.println("1 - Para adicionar alunos (e seus dados pessoais).");
-            System.out.println("2 - Para acrescentar notas aos alunos.\n");
+            System.out.println("2 - Para acrescentar notas aos alunos.");
             System.out.println("3 - Para alterar dados pessoais dos alunos.");
-            System.out.println("4 - Para alterar notas dos alunos.\n");
+            System.out.println("4 - Para alterar notas dos alunos.");
             System.out.println("5 - Para consultar os alunos (e seus dados pessoais).");
-            System.out.println("6 - Para consultar os alunos (e suas notas/médias).\n");
+            System.out.println("6 - Para consultar os alunos (e suas notas/médias).");
             System.out.println("7 - Para excluir alunos.");
             System.out.println("8 - Sair.");
             
@@ -25,7 +25,6 @@ public class Main {
             switch (entrada) {
                 case 1:
                     System.out.println("\nAdicionando Alunos...");
-                    
                     Aluno al = new Aluno();
                     boolean matriculaValida = false;
                     
@@ -33,8 +32,8 @@ public class Main {
                         al.add_aluno();
                         
                         boolean matriculaExistente = false;
-                        for (int i = 0; i < num_alunos; i++) {
-                            if (al.getMatricula() == alunos[i].getMatricula()) {
+                        for (Aluno aluno : alunos) {
+                            if (al.getMatricula() == aluno.getMatricula()) {
                                 matriculaExistente = true;
                                 System.out.println("Matrícula já existente! Por favor, insira outra matrícula.\n");
                                 break;
@@ -43,29 +42,26 @@ public class Main {
                         
                         if (!matriculaExistente) {
                             matriculaValida = true;
-                            alunos[num_alunos] = al;
-                            num_alunos++;
-                            System.out.println("\nAluno adicionado com sucesso!\n");
+                            alunos.add(al);
+                            cont++;
+                            System.out.println("\nAluno de matrícula "+cont+" adicionado com sucesso!\n");
                         }
                     }
-                    
-                    System.out.println("");
                     break;
                     
                 case 2:
                     System.out.println("\nAcrescentando notas aos alunos...");
-                    
-                    if (num_alunos > 0) {
+                    if (!alunos.isEmpty()) {
                         System.out.print("Digite a matrícula do aluno: ");
                         int checarMatricula = sn.nextInt();
                         
                         boolean alunoEncontrado = false;
-                        for (int i = 0; i < num_alunos; i++) {
-                            if (checarMatricula == alunos[i].getMatricula()) {
-                                System.out.println("\nAluno referenciado: " + alunos[i].getNome());
+                        for (Aluno aluno : alunos) {
+                            if (checarMatricula == aluno.getMatricula()) {
+                                System.out.println("\nAluno referenciado: " + aluno.getNome());
                                 System.out.print("Digite a nota do aluno: ");
                                 float nota = sn.nextFloat();
-                                alunos[i].addNota(nota);
+                                aluno.addNota(nota);
                                 alunoEncontrado = true;
                                 break;
                             }
@@ -77,19 +73,18 @@ public class Main {
                     } else {
                         System.out.println("Não há alunos para adicionar notas.\n");
                     }
-                    
                     break;
 
                 case 3:
                     System.out.println("\nAlterando dados pessoais dos alunos...");
-                    if (num_alunos > 0) {
+                    if (!alunos.isEmpty()) {
                         System.out.print("Digite a matrícula do aluno: ");
                         int checarMatricula = sn.nextInt();
                         
                         boolean alunoEncontrado = false;
-                        for (int i = 0; i < num_alunos; i++) {
-                            if (checarMatricula == alunos[i].getMatricula()) {
-                                alunos[i].alterarAluno(alunos, num_alunos);
+                        for (Aluno aluno : alunos) {
+                            if (checarMatricula == aluno.getMatricula()) {
+                                aluno.alterarAluno(alunos);
                                 alunoEncontrado = true;
                                 break;
                             }
@@ -104,18 +99,18 @@ public class Main {
 
                 case 4:
                     System.out.println("\nAlterando notas dos alunos...");
-                    if (num_alunos > 0) {
+                    if (!alunos.isEmpty()) {
                         System.out.print("Digite a matrícula do aluno: ");
                         int checarMatricula = sn.nextInt();
                         
                         boolean alunoEncontrado = false;
-                        for (int i = 0; i < num_alunos; i++) {
-                            if (checarMatricula == alunos[i].getMatricula()) {
-                                System.out.println("Aluno referenciado: " + alunos[i].getNome());
+                        for (Aluno aluno : alunos) {
+                            if (checarMatricula == aluno.getMatricula()) {
+                                System.out.println("Aluno referenciado: " + aluno.getNome());
                                 System.out.println("\nNotas atuais do aluno:");
                                 
-                                for (int j = 0; j < alunos[i].getNotas().length; j++) {
-                                    System.out.println("Nota " + (j + 1) + ": " + alunos[i].getNotas()[j]);
+                                for (int j = 0; j < aluno.getNotas().length; j++) {
+                                    System.out.println("Nota " + (j + 1) + ": " + aluno.getNotas()[j]);
                                 }
                                 
                                 System.out.print("Digite o número da nota a ser alterada (1, 2, ou 3): ");
@@ -124,7 +119,7 @@ public class Main {
                                 if (notaIndex >= 1 && notaIndex <= 3) {
                                     System.out.print("Digite a nova nota: ");
                                     float novaNota = sn.nextFloat();
-                                    alunos[i].alterarNota(notaIndex - 1, novaNota);
+                                    aluno.alterarNota(notaIndex - 1, novaNota);
                                     System.out.println("Nota alterada com sucesso!\n");
                                 } else {
                                     System.out.println("Número de nota inválido.\n");
@@ -143,37 +138,31 @@ public class Main {
                 
                 case 5:
                     System.out.println("\nConsultando dados pessoais dos alunos...");
-
-                    if (num_alunos > 0) {
-                        for (int i = 0; i < num_alunos; i++) {
-                            System.out.println("\n\t\t\tDados pessoais do aluno com matrícula: " + alunos[i].getMatricula());
-                            alunos[i].mostrar_dados();
+                    if (!alunos.isEmpty()) {
+                        for (Aluno aluno : alunos) {
+                            System.out.println("\n\t\t\tDados pessoais do aluno com matrícula: " + aluno.getMatricula());
+                            aluno.mostrar_dados();
                             System.out.println();
                         }
-                    } 
-                    else {
+                    } else {
                         System.out.println("Não há alunos para consultar.\n");
                     }
                     break;
 
-                    
                 case 6:
                     System.out.println("\nConsultando notas/médias dos alunos...");
-                    
-                    if (num_alunos > 0) {
-                        for (int i = 0; i < num_alunos; i++) {
-                            System.out.println("\n\t\t\tNotas e média do aluno com matrícula " + alunos[i].getMatricula() + "\n");
-                            
+                    if (!alunos.isEmpty()) {
+                        for (Aluno aluno : alunos) {
+                            System.out.println("\n\t\t\tNotas e média do aluno com matrícula " + aluno.getMatricula() + "\n");
                             float somaNotas = 0;
                             int numNotas = 0;
-                            for (float nota : alunos[i].getNotas()) {
+                            for (float nota : aluno.getNotas()) {
                                 if (nota != 0) {
                                     System.out.println("\t\t\tNota " + (numNotas + 1) + ": " + nota);
                                     somaNotas += nota;
                                     numNotas++;
                                 }
                             }
-                            
                             if (numNotas > 0) {
                                 float media = somaNotas / numNotas;
                                 System.out.println("\n\t\t\tMédia: " + media);
@@ -189,19 +178,15 @@ public class Main {
 
                 case 7:
                     System.out.println("\nExcluindo aluno...");
-                    if (num_alunos > 0) {
+                    if (!alunos.isEmpty()) {
                         System.out.print("Digite a matrícula do aluno a ser excluído: ");
                         int checarMatricula = sn.nextInt();
 
                         boolean alunoEncontrado = false;
-                        for (int i = 0; i < num_alunos; i++) {
-                            if (checarMatricula == alunos[i].getMatricula()) {
+                        for (int i = 0; i < alunos.size(); i++) {
+                            if (checarMatricula == alunos.get(i).getMatricula()) {
                                 alunoEncontrado = true;
-                                for (int j = i; j < num_alunos - 1; j++) {
-                                    alunos[j] = alunos[j + 1];
-                                }
-                                alunos[num_alunos - 1] = null;
-                                num_alunos--;
+                                alunos.remove(i);
                                 System.out.println("Aluno excluído com sucesso!\n");
                                 break;
                             }
