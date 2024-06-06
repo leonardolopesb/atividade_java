@@ -201,7 +201,7 @@ public class Main {
                     break;
                 
                 case 8:
-                    System.out.println("\nBye Bye!");
+                    System.out.println("\nBoas férias!");
                     break;
                     
                 default:
