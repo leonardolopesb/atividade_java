@@ -6,7 +6,6 @@ public class Main {
         Scanner sn = new Scanner(System.in);
         
         int entrada = 0;
-        int cont = 0;
         ArrayList<Aluno> alunos = new ArrayList<>();
         
         while (entrada != 8) {
@@ -27,10 +26,10 @@ public class Main {
                     System.out.println("\nAdicionando Alunos...");
                     Aluno al = new Aluno();
                     boolean matriculaValida = false;
-                    
+        
                     while (!matriculaValida) {
                         al.add_aluno();
-                        
+            
                         boolean matriculaExistente = false;
                         for (Aluno aluno : alunos) {
                             if (al.getMatricula() == aluno.getMatricula()) {
@@ -39,12 +38,11 @@ public class Main {
                                 break;
                             }
                         }
-                        
+            
                         if (!matriculaExistente) {
                             matriculaValida = true;
                             alunos.add(al);
-                            cont++;
-                            System.out.println("\nAluno de matrícula "+cont+" adicionado com sucesso!\n");
+                            System.out.println("\nAluno adicionado com sucesso!\n");
                         }
                     }
                     break;
@@ -165,7 +163,7 @@ public class Main {
                             }
                             if (numNotas > 0) {
                                 float media = somaNotas / numNotas;
-                                System.out.println("\n\t\t\tMédia: " + media);
+                                System.out.printf("\n\t\t\tMédia:  %.2f \n", media);
                             } else {
                                 System.out.println("\t\t\tNenhuma nota registrada.\n");
                             }
