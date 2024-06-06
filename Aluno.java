@@ -35,7 +35,6 @@ abstract class Pessoa {
     public abstract void mostrar_dados();
 }
 
-// Classe Aluno que herda de Pessoa e implementa Estudante
 public class Aluno extends Pessoa implements Estudante {
     private static int contadorMatricula = 1;
     protected int matricula;
