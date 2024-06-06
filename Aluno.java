@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-// Interface Estudante
 interface Estudante {
     void addNota(float nota);
     void alterarAluno(ArrayList<Aluno> alunos);
@@ -13,7 +12,6 @@ interface Estudante {
     int getMatricula();
 }
 
-// Classe abstrata Pessoa (dados pessoais)
 abstract class Pessoa {
     protected String nome;
     protected int idade;
@@ -34,7 +32,6 @@ abstract class Pessoa {
         this.idade = idade;
     }
 
-    // Método abstrato para ser implementado pelas classes derivadas
     public abstract void mostrar_dados();
 }
 
@@ -85,6 +82,9 @@ public class Aluno extends Pessoa implements Estudante {
 
         System.out.print("Digite a idade do aluno: ");
         this.idade = sn.nextInt();
+        
+        System.out.print("Digite a matrícula do aluno: ");
+        this.matricula = sn.nextInt();
 
         System.out.print("Digite o ano do aluno (apenas um número): ");
         this.classe = sn.nextInt();
@@ -144,6 +144,7 @@ public class Aluno extends Pessoa implements Estudante {
         System.out.println("4 - Alterar Ano");
         System.out.println("5 - Alterar Turma\n");
         System.out.print("Escolha a informação a alterar: ");
+        
         int info = sn.nextInt();
         switch (info) {
             case 1:
@@ -191,7 +192,6 @@ public class Aluno extends Pessoa implements Estudante {
         }
     }
 
-    // Sobrecarga do método adicionarNotas
     public void addNota(float nota, int index) {
         if (index >= 0 && index < notas.length) {
             notas[index] = nota;
@@ -201,7 +201,6 @@ public class Aluno extends Pessoa implements Estudante {
         }
     }
 
-    // Sobrecarga do método mostrar_dados
     public void mostrar_dados(boolean mostrarNotas) {
         mostrar_dados();
         if (mostrarNotas) {
